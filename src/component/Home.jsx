@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserData } from './store/user/thunk'
 import Search from './Search'
 import Nav from './Nav'
+import { addToCart } from './store/addToCart/slice'
 
 const Home = () => {
   const [users, setUsers] = useState()
@@ -38,7 +39,7 @@ const Home = () => {
         {
           users?.map( item => {
             return <React.Fragment key={item.id}>
-            <Card name={item.name} email={item.email} webLink={item.website} />
+            <Card onclick={()=>dispatch(addToCart(item))} name={item.name} email={item.email} webLink={item.website} />
            </React.Fragment>
           })
         }
